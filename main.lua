@@ -32,7 +32,7 @@ function love.keyreleased(key)
 end
 
 function love.mousepressed(x, y, btn)
-	
+	ents['player1']:input(y);
 end
 
 function love.mousereleased(x, y, btn)
