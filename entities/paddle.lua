@@ -21,6 +21,7 @@ function paddle:ctor(player, ai)
 	self.target = (height / 2);
 	self.speed = 100 * scale;
 	self.ai = ai or false;
+	self.ai_at_target = true;
 	self.centerW = self.w / 2;
 	self.centerH = self.h / 2;
 end
@@ -30,18 +31,26 @@ function paddle:draw()
 end
 
 function paddle:update(dt)
-
-	local offset = self.target - self.centerH; -- target aimed from center
-	local near_target = math.abs(offset - self.y) < 1; -- y coord within 1 pixel of target
-	
-	if (near_target) then
-		self.y = offset; -- set the y coord to the precise target
-	else
-		if (offset > self.y) then
-			self.y = self.y + (self.speed * dt);
-		elseif (offset < self.y) then
-			self.y = self.y - (self.speed * dt);
+	if not ai then
+		local offset = self.target - self.centerH; -- target aimed from center
+		local near_target = math.abs(offset - self.y) < 1; -- y coord within 1 pixel of target
+		
+		if (near_target) then
+			self.y = offset; -- set the y coord to the precise target
+		else
+			if (offset > self.y) then
+				self.y = self.y + (self.speed * dt);
+			elseif (offset < self.y) then
+				self.y = self.y - (self.speed * dt);
+			end
 		end
+	else
+		-- if ai
+		-- should i move:
+		--	is the ball on my side of the field?
+		--		am i at my target?
+		--	
+		--local near_target = math.abs(offset - self.y) < 1; -- y coord within 1 pixel of target
 	end
 end
 
