@@ -19,7 +19,7 @@ function paddle:ctor(player, ai)
 	end
 	self.y = (height / 2) - 20;
 	self.target = (height / 2);
-	self.speed = 100;
+	self.speed = 100 * scale;
 	self.ai = ai or false;
 	self.centerW = self.w / 2;
 	self.centerH = self.h / 2;
