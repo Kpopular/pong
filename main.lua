@@ -52,5 +52,5 @@ function newGame()
 	ents['player2'] = pfactory:factory();
 	ents['player2']:ctor(2, false);
 	
-	-- consider passing the ball end to the scoreboard ctor so they're aware of each other
+	-- consider passing the ball ent to the scoreboard ctor so they're aware of each other
 end
