@@ -32,7 +32,7 @@ function love.keyreleased(key)
 end
 
 function love.mousepressed(x, y, btn)
-	
+	ents['player1']:input(y);
 end
 
 function love.mousereleased(x, y, btn)
@@ -42,15 +42,15 @@ end
 function newGame()
 	ents = {};
 	ents['midway'] = require('entities.midway');
-	ents['ball'] = require('entities.ball');
-	ents['ball']:ctor();
 	ents['scoreboard'] = require('entities.scoreboard');
 	ents['scoreboard']:ctor();
+	ents['ball'] = require('entities.ball');
+	ents['ball']:ctor(ents['scoreboard']);
 	local pfactory = require('entities.paddle');
 	ents['player1'] = pfactory:factory();
 	ents['player1']:ctor();
 	ents['player2'] = pfactory:factory();
 	ents['player2']:ctor(2, false);
 	
-	-- consider passing the ball end to the scoreboard ctor so they're aware of each other
+	-- consider passing the ball ent to the scoreboard ctor so they're aware of each other
 end
