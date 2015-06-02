@@ -42,10 +42,10 @@ end
 function newGame()
 	ents = {};
 	ents['midway'] = require('entities.midway');
-	ents['ball'] = require('entities.ball');
-	ents['ball']:ctor();
 	ents['scoreboard'] = require('entities.scoreboard');
 	ents['scoreboard']:ctor();
+	ents['ball'] = require('entities.ball');
+	ents['ball']:ctor(ents['scoreboard']);
 	local pfactory = require('entities.paddle');
 	ents['player1'] = pfactory:factory();
 	ents['player1']:ctor();
