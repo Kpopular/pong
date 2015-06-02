@@ -1,3 +1,5 @@
+-- prototype root object
+-- not used in the game, was used as a reference/template for other ents
 local ent = {};
 
 function ent:draw()
